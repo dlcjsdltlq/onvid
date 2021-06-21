@@ -46,7 +46,6 @@ const ProgressBar = styled.div`
 
 function VideoProcessingNotice({ progressState }) {
 	const { isProgress, rate } = progressState;
-	console.log(progressState);
 	return (
 		<VideoProcessing isProgress={isProgress}>
 			<ProcessingText isComplete={rate === 100}>

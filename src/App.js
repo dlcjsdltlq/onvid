@@ -16,7 +16,6 @@ function App() {
 				isProgress: true,
 				rate: (message.split(/\s+/)[1] / (t * frameRate)) * 100,
 			});
-			console.log(message, t);
 		}
 	};
 

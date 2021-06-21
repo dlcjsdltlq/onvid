@@ -117,11 +117,9 @@ function MainContainer({ executeDownload }) {
 			...options,
 			[name]: value,
 		});
-		console.log(name, value);
 	};
 
 	const onClick = async () => {
-		console.log(isRecording);
 		if (!isRecording) {
 			//recording start
 			const [recType, resOption] = [
