@@ -2,6 +2,9 @@ import MainContainer from './MainContainer';
 import VideoProcessingNotice from './VideoProcessingNotice';
 import { toLibx264 } from './Recorder';
 import { useState } from 'react';
+import NotSupportMobile from './NotSupportMobile';
+
+const isNotSupport = true; ///Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent); 
 
 function App() {
 	const [progressState, setProgress] = useState({
@@ -44,7 +47,7 @@ function App() {
 
 	return (
 		<div>
-			<MainContainer executeDownload={executeDownload} />
+			{ isNotSupport ? <NotSupportMobile/> : <MainContainer executeDownload={executeDownload} /> }
 			<VideoProcessingNotice progressState={progressState} />
 		</div>
 	);
