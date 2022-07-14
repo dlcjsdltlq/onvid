@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     background: rgba(255, 255, 255, 0.6);
-	backdrop-filter: blur(5.5px);
-	-webkit-backdrop-filter: blur(5.5px);
-	border-radius: 10px;
+    backdrop-filter: blur(5.5px);
+    -webkit-backdrop-filter: blur(5.5px);
+    border-radius: 10px;
     margin: 30vh auto;
     padding: .7em;
     max-width: 40em;
@@ -20,12 +20,12 @@ const Text = styled.span`
 `;
 
 function NotSupportMobile() {
-	return (
-		<Container>
-			<Header>Sorry.</Header> <br/>
-			<Text>This browser does not support our service. Please use our service with supported browsers.</Text>
-		</Container>
-	);
+    return (
+        <Container>
+            <Header>Sorry.</Header> <br/>
+            <Text>This browser does not support our service. Please use our service with supported browsers.</Text>
+        </Container>
+    );
 }
 
 export default NotSupportMobile;
