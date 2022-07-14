@@ -165,8 +165,7 @@ function MainContainer({ executeDownload }) {
             );
             recorder.current.startRecording();
             videoStreaming.current.srcObject = stream.current;
-            videoStreaming.current.onloadedmetadata = (e) =>
-                videoStreaming.current.play();
+            videoStreaming.current.onloadedmetadata = (e) => videoStreaming.current.play();
             setRecordingState({
                 isRecording: true,
             });

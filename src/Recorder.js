@@ -29,29 +29,13 @@ async function toLibx264(blob, logger) {
     const ffmpeg = createFFmpeg({
         logger: logger,
     });
-    /*
+
     await ffmpeg.load();
     const buffer = await blob.arrayBuffer();
-    ffmpeg.FS(
-        'writeFile',
-        'input.webm',
-        new Uint8Array(buffer, 0, buffer.byteLength)
-    );
-    await ffmpeg.run(
-        '-i',
-        'input.webm',
-        '-c:v',
-        'libx264',
-        '-preset',
-        'ultrafast',
-        '-crf',
-        '27',
-        'output.mp4'
-    );
+    ffmpeg.FS('writeFile', 'input.webm', new Uint8Array(buffer, 0, buffer.byteLength));
+    await ffmpeg.run('-i', 'input.webm', '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '27', 'output.mp4');
     const output = ffmpeg.FS('readFile', 'output.mp4');
     return new Blob([output.buffer], { type: 'video/mp4' });
-    */
-   return blob;
 }
 
 export { Recorder, toLibx264 };
