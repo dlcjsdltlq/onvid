@@ -35,6 +35,9 @@ async function toLibx264(blob, logger) {
     ffmpeg.FS('writeFile', 'input.webm', new Uint8Array(buffer, 0, buffer.byteLength));
     await ffmpeg.run('-i', 'input.webm', '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '27', 'output.mp4');
     const output = ffmpeg.FS('readFile', 'output.mp4');
+    
+    ffmpeg.FS('unlink', 'input.webm');
+    setTimeout(() => ffmpeg.FS('unlink', 'output.mp4'), 2000);
     return new Blob([output.buffer], { type: 'video/mp4' });
 }
 

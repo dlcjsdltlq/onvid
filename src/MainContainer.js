@@ -4,7 +4,7 @@ import * as constants from './constants';
 import styled from 'styled-components';
 
 const Container = styled.div`
-    width: 60em;
+    max-width: 60em;
     background: rgba(255, 255, 255, 0.4);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(5.5px);
@@ -161,7 +161,7 @@ function MainContainer({ executeDownload }) {
                     mimeType: 'video/webm; codecs=vp8',
                     audioBitsPerSecond: 128000,
                 },
-                (blob, duration) => executeDownload(blob, 30, duration)
+                (blob, duration) => executeDownload(blob, duration)
             );
             recorder.current.startRecording();
             videoStreaming.current.srcObject = stream.current;

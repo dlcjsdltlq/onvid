@@ -12,12 +12,16 @@ function App() {
         rate: 0,
     });
 
-    const updateProgress = (frameRate, t, log) => {
+    const updateProgress = (duration, log) => {
         const { message } = log;
         if (message.startsWith('frame=')) {
+            const l = message.match(/[\d.]+/g);
+            if (l.length !== 11) return;
+            const time = l[4] * 3600 + l[5] * 60 + +l[6];
+
             setProgress({
                 isProgress: true,
-                rate: (message.split(/\s+/)[1] / (t * frameRate)) * 100,
+                rate: (time / duration) * 100,
             });
         }
     };
@@ -30,9 +34,10 @@ function App() {
         a.click();
     };
 
-    const executeDownload = async (blob, frameRate, t) => {
-        const resultBlob = await toLibx264(blob, (log) =>
-            updateProgress(frameRate, t, log)
+    const executeDownload = async (blob, duration) => {
+        const resultBlob = await toLibx264(blob, (log) => {
+            updateProgress(duration, log);
+        }
         );
         setProgress({
             isProgress: true,
